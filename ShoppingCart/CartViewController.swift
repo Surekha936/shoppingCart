@@ -68,12 +68,18 @@ class CartViewController: UIViewController, UITableViewDataSource {
     @IBAction func buttonCallVendorPressed(_ sender: UIButton)
     {
          let product = productsArray[sender.tag]
-        if let url = URL(string: "tel://\(product.value(forKeyPath: "phoneNumber"))"), UIApplication.shared.canOpenURL(url) {
+        if product.value(forKeyPath: "phoneNumber") != nil
+        {
+            let phoneNumber : String = product.value(forKeyPath: "phoneNumber") as! String
+        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url)
+        {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url)
             } else {
                 UIApplication.shared.openURL(url)
             }
+        }
+            
         }
     }
     
