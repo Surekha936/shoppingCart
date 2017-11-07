@@ -17,20 +17,27 @@ class CustomTableViewCell: UITableViewCell
     @IBOutlet weak var label_Price: CustomLabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var label_PriceValue: CustomLabel!
+    @IBOutlet weak var view_Container: UIView!
     @IBOutlet weak var button_CallVendor: UIButton!
     @IBOutlet weak var button_RemoveFromCart: UIButton!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        button_CallVendor.layer.borderColor = UIColor.gray.cgColor
-        button_RemoveFromCart.layer.borderColor = UIColor.gray.cgColor
+        button_CallVendor.layer.borderColor = UIColor.lightGray.cgColor
+        button_RemoveFromCart.layer.borderColor = UIColor.lightGray.cgColor
+        view_Container.layer.borderColor = UIColor.lightGray.cgColor
         button_CallVendor.layer.borderWidth = 1.0
+        view_Container.layer.borderWidth = 1.0
+         view_Container.layer.cornerRadius = 4.0
         button_RemoveFromCart.layer.borderWidth = 1.0
     }
 }
 class CartViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var label_TotalPrice: UILabel!
+    
     var productsArray: [NSManagedObject] = []
     let cart = CartAPI()
     override func viewDidLoad()
@@ -39,7 +46,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
         tableView.backgroundColor = UIColor.white
-        tableView.tableHeaderView?.frame.size = CGSize.zero
+
 //        tableView.register(CustomTableViewCell.self,
 //                           forCellReuseIdentifier: "Cell")
 // tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -49,13 +56,20 @@ class CartViewController: UIViewController, UITableViewDataSource {
         self.automaticallyAdjustsScrollViewInsets = false;
         self.tableView.contentInset = UIEdgeInsets.zero;
         self.tableView.scrollIndicatorInsets = UIEdgeInsets.zero;
-      
+        self.tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
+
       
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool)
     {
           productsArray = cart.getCartData()
+        
+        if let sum = (productsArray as NSArray).value(forKeyPath:"@sum.productPrice") as? Double
+        {
+          label_TotalPrice.text = "Total Price : \(sum)"
+        }
+
         self.tableView.reloadData()
     }
     override func didReceiveMemoryWarning()
@@ -89,9 +103,23 @@ class CartViewController: UIViewController, UITableViewDataSource {
        let success = cart.removeFromCart(productId: (product.value(forKeyPath: "productID") as! String?)!)
         if success
         {
-            print("removed")
+//            print("removed")
+            let alert = UIAlertController(title: "Alert", message: "Removed from cart", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            
+            // change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when){
+                // your code with delay
+                alert.dismiss(animated: true, completion: nil)
+            }
             productsArray.remove(at:sender.tag)
             tableView.reloadData()
+            if let sum = (productsArray as NSArray).value(forKeyPath:"@sum.productPrice") as? Double
+            {
+                label_TotalPrice.text = "Total Price : \(sum)"
+            }
+
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -155,7 +183,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
                 }.resume()
         }
        
-       
+       cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
     
@@ -168,15 +196,11 @@ class CartViewController: UIViewController, UITableViewDataSource {
     {
         return UITableViewAutomaticDimension
     }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-        footerView.backgroundColor = UIColor.blue
-        return footerView
-    }
+   
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
-        return 40
+        return 1.0
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1.0

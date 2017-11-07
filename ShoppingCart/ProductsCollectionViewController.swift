@@ -46,7 +46,7 @@ class ProductsCollectionViewController: UIViewController, UICollectionViewDataSo
     @IBAction func AddToCartPressed(_ sender: UIButton)
     {
         print("pressed button")
-        var productDict = array_Products[sender.tag]
+        let productDict = array_Products[sender.tag]
         let cell : MyCollectionViewCell = collectionView_products.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! MyCollectionViewCell
         if cell.imageOne.image != nil
         {
@@ -54,7 +54,21 @@ class ProductsCollectionViewController: UIViewController, UICollectionViewDataSo
             productDict.setValue(image, forKey: "productImage")
         }
         let cart = CartAPI()
-        cart.save(productDict: array_Products[sender.tag]);
+       let success =  cart.save(productDict: array_Products[sender.tag]);
+        if success
+        {
+            //            print("removed")
+            let alert = UIAlertController(title: "Alert", message: "Added to cart", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            
+            // change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when)
+            {
+                // your code with delay
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     override func didReceiveMemoryWarning()
     {
@@ -186,7 +200,7 @@ class ProductsCollectionViewController: UIViewController, UICollectionViewDataSo
         cell.backgroundColor = UIColor.white
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 8
+        cell.layer.cornerRadius = 2
         
         return cell
         

@@ -21,27 +21,35 @@ class ProductsAPI: NSObject
                     URLSession.shared.dataTask(with: productsURL as URL)
                     {
                         data, response, error in
-                        do
-                        {
-                            let res = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                            if (res?["products"]) != nil
-                                
+                        
+                        if error != nil {
+                            print(error)
+                        }
+                        else
                             {
-                                DispatchQueue.main.sync
-                                    {
-                                        completion(res?["products"] as! NSArray?)
+
+                            do
+                            {
+                                let res = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                                if (res?["products"]) != nil
+                                    
+                                {
+                                    DispatchQueue.main.sync
+                                        {
+                                            completion(res?["products"] as! NSArray?)
+                                    }
+                                }
+                                else
+                                {
+                                    completion( [])
                                 }
                             }
-                            else
+                            catch let error as NSError
                             {
-                                completion( [])
+                                print(error)
+                                }
                             }
-                        }
-                        catch let error
-                        {
-                            print("error: \(error.localizedDescription)")
-                        }
-                        }.resume()
+                    }.resume()
                 }
         }
      }

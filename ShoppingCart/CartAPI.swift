@@ -55,9 +55,9 @@ class CartAPI: NSObject
          return cartData
     }
     
-    func save(productDict: NSDictionary) {
+    func save(productDict: NSDictionary) -> Bool{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
+            return false
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -110,9 +110,12 @@ class CartAPI: NSObject
         }
         do {
             try managedContext.save()
+            
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+            return false
         }
+        return true
     }
     
 }
