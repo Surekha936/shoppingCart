@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d0K-1a-Dtq">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d0K-1a-Dtq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-BoldItalic</string>
+            <string>HelveticaNeue-Italic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="yvW-8g-duw">
@@ -28,7 +34,7 @@
             </objects>
             <point key="canvasLocation" x="-2889" y="85"/>
         </scene>
-        <!--Item-->
+        <!--Cart-->
         <scene sceneID="bZf-uj-XRW">
             <objects>
                 <viewController id="i8V-Ob-BGf" customClass="CartViewController" customModule="ShoppingCart" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,24 +46,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-iw-fcB">
-                                <rect key="frame" x="16" y="0.0" width="343" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUu-HH-8VK">
+                                <rect key="frame" x="16" y="25" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.85642766950000004" green="0.83483409880000004" blue="0.85180038209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RRO-wR-BDX"/>
+                                    <constraint firstAttribute="height" constant="50" id="nkl-bG-cP9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="153" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T5v-RN-oT6">
-                                <rect key="frame" x="16" y="50" width="343" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="40" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T5v-RN-oT6">
+                                <rect key="frame" x="16" y="75" width="343" height="543"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="153" id="N1F-qP-qwk" customClass="CustomTableViewCell" customModule="ShoppingCart" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="153"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="N1F-qP-qwk" customClass="CustomTableViewCell" customModule="ShoppingCart" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1F-qP-qwk" id="zGV-Hf-S1s">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="153"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ea8-dn-PuL">
@@ -68,34 +76,35 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-NZ-4nM" userLabel="ProductName" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
-                                                    <rect key="frame" x="122" y="16" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="122" y="16" width="42" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="752" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="999" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xe-rR-NbM" userLabel="VendorAddress" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
-                                                    <rect key="frame" x="122" y="68" width="42" height="16.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="122" y="62" width="32" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yT-kJ-Da3" userLabel="Price" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
-                                                    <rect key="frame" x="288" y="16" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="298" y="16" width="32" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYG-dZ-lU1" userLabel="PriceValue" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
-                                                    <rect key="frame" x="288" y="42" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="298" y="36.5" width="32" height="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAr-lb-Ah8">
-                                                    <rect key="frame" x="25" y="99.5" width="139" height="35"/>
+                                                    <rect key="frame" x="18" y="92.5" width="148.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="Qd3-Zb-eaR"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
                                                     <state key="normal" title="Call Vendor">
                                                         <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -104,10 +113,11 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqE-ce-pBZ">
-                                                    <rect key="frame" x="181" y="99.5" width="139" height="35"/>
+                                                    <rect key="frame" x="176.5" y="92.5" width="148.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="YSt-QP-NbS"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
                                                     <state key="normal" title="Remove From Cart">
                                                         <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -116,8 +126,8 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gO-la-Th0" userLabel="VendorName" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
-                                                    <rect key="frame" x="122" y="42" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="122" y="41" width="32" height="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -126,10 +136,10 @@
                                                 </activityIndicatorView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="OqE-ce-pBZ" secondAttribute="trailing" constant="15" id="0rW-mG-pi0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OqE-ce-pBZ" secondAttribute="trailing" constant="10" id="0rW-mG-pi0"/>
                                                 <constraint firstItem="OqE-ce-pBZ" firstAttribute="top" secondItem="cAr-lb-Ah8" secondAttribute="top" id="1uO-Vo-fEc"/>
                                                 <constraint firstItem="9yT-kJ-Da3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2xe-rR-NbM" secondAttribute="trailing" constant="10" id="1xw-Fw-9Ww"/>
-                                                <constraint firstItem="OqE-ce-pBZ" firstAttribute="leading" secondItem="cAr-lb-Ah8" secondAttribute="trailing" constant="17" id="2cn-rk-N26"/>
+                                                <constraint firstItem="OqE-ce-pBZ" firstAttribute="leading" secondItem="cAr-lb-Ah8" secondAttribute="trailing" constant="10" id="2cn-rk-N26"/>
                                                 <constraint firstItem="0gO-la-Th0" firstAttribute="leading" secondItem="jA5-NZ-4nM" secondAttribute="leading" id="AC3-tm-cGn"/>
                                                 <constraint firstItem="9yT-kJ-Da3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jA5-NZ-4nM" secondAttribute="trailing" constant="10" id="BcE-W5-va9"/>
                                                 <constraint firstItem="jA5-NZ-4nM" firstAttribute="top" secondItem="zGV-Hf-S1s" secondAttribute="topMargin" constant="8" id="BnX-pe-KVU"/>
@@ -137,7 +147,7 @@
                                                 <constraint firstItem="9yT-kJ-Da3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0gO-la-Th0" secondAttribute="trailing" constant="10" id="EoA-qz-BbG"/>
                                                 <constraint firstItem="dYG-dZ-lU1" firstAttribute="leading" secondItem="9yT-kJ-Da3" secondAttribute="leading" id="JC2-RI-O37"/>
                                                 <constraint firstItem="jA5-NZ-4nM" firstAttribute="leading" secondItem="ea8-dn-PuL" secondAttribute="trailing" constant="5" id="Le5-cZ-SLV"/>
-                                                <constraint firstItem="cAr-lb-Ah8" firstAttribute="leading" secondItem="zGV-Hf-S1s" secondAttribute="leadingMargin" constant="17" id="Lzw-Zy-vaM"/>
+                                                <constraint firstItem="cAr-lb-Ah8" firstAttribute="leading" secondItem="zGV-Hf-S1s" secondAttribute="leadingMargin" constant="10" id="Lzw-Zy-vaM"/>
                                                 <constraint firstItem="2xe-rR-NbM" firstAttribute="top" secondItem="0gO-la-Th0" secondAttribute="bottom" constant="5" id="MYk-iU-T0Z"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cAr-lb-Ah8" secondAttribute="bottom" constant="10" id="NyQ-BC-Zyg"/>
                                                 <constraint firstItem="cAr-lb-Ah8" firstAttribute="top" secondItem="2xe-rR-NbM" secondAttribute="bottom" constant="15" id="OfE-5I-sxz"/>
@@ -177,14 +187,14 @@
                         <constraints>
                             <constraint firstItem="Mko-Rs-yni" firstAttribute="top" secondItem="T5v-RN-oT6" secondAttribute="bottom" id="062-Hr-1Vx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T5v-RN-oT6" secondAttribute="trailing" id="5G1-Yr-qLP"/>
-                            <constraint firstItem="mSe-iw-fcB" firstAttribute="top" secondItem="EKs-m1-EDI" secondAttribute="top" id="NgQ-qg-qD3"/>
+                            <constraint firstItem="T5v-RN-oT6" firstAttribute="top" secondItem="uUu-HH-8VK" secondAttribute="bottom" id="9z4-wV-tyn"/>
+                            <constraint firstItem="uUu-HH-8VK" firstAttribute="leading" secondItem="EKs-m1-EDI" secondAttribute="leadingMargin" id="G8p-pl-u2f"/>
                             <constraint firstItem="T5v-RN-oT6" firstAttribute="leading" secondItem="EKs-m1-EDI" secondAttribute="leadingMargin" id="S26-id-nef"/>
-                            <constraint firstItem="mSe-iw-fcB" firstAttribute="leading" secondItem="EKs-m1-EDI" secondAttribute="leadingMargin" id="Skt-qq-oLe"/>
-                            <constraint firstItem="T5v-RN-oT6" firstAttribute="top" secondItem="mSe-iw-fcB" secondAttribute="bottom" id="Y1b-l6-rZw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mSe-iw-fcB" secondAttribute="trailing" id="YHg-mk-ZSf"/>
+                            <constraint firstItem="uUu-HH-8VK" firstAttribute="top" secondItem="vrT-JL-Gth" secondAttribute="bottom" constant="5" id="Tkf-jW-mvV"/>
+                            <constraint firstItem="uUu-HH-8VK" firstAttribute="trailing" secondItem="EKs-m1-EDI" secondAttribute="trailingMargin" id="vM3-24-rvx"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="J1Q-3b-LZ1"/>
+                    <tabBarItem key="tabBarItem" title="Cart" image="Players.png" id="J1Q-3b-LZ1"/>
                     <connections>
                         <outlet property="tableView" destination="T5v-RN-oT6" id="t1G-D2-l0D"/>
                     </connections>
@@ -193,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="-1789.5999999999999" y="424.13793103448279"/>
         </scene>
-        <!--Item-->
+        <!--Products-->
         <scene sceneID="ukM-cd-zTB">
             <objects>
                 <viewController id="FMN-5c-Hve" customClass="ProductsCollectionViewController" customModule="ShoppingCart" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,23 +215,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84f-KG-Pk7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84f-KG-Pk7">
                                 <rect key="frame" x="16" y="25" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.85642766950000004" green="0.83483409880000004" blue="0.85180038209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CPh-nV-f0y"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o8W-9B-yzu">
                                 <rect key="frame" x="16" y="90" width="343" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Tw-ES-V83">
-                                    <size key="itemSize" width="142" height="181"/>
+                                    <size key="itemSize" width="150" height="230"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="nLB-Sc-joO">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="528"/>
@@ -229,23 +240,51 @@
                                 </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Tfj-Gt-Xy0" customClass="MyCollectionViewCell" customModule="ShoppingCart" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="142" height="181"/>
+                                        <rect key="frame" x="10" y="0.0" width="150" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="142" height="181"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="230"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fb2-Lm-1I9">
-                                                    <rect key="frame" x="19" y="12" width="104" height="80"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fb2-Lm-1I9">
+                                                    <rect key="frame" x="19" y="10" width="112" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="8z6-JL-y58"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s29-iN-y6E">
-                                                    <rect key="frame" x="61" y="80" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s29-iN-y6E">
+                                                    <rect key="frame" x="65" y="40" width="20" height="20"/>
                                                 </activityIndicatorView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-b9-aSs">
-                                                    <rect key="frame" x="15" y="155" width="112" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL5-03-DIT" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="100" width="130" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cX-k0-rNG" userLabel="Product Price" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="120.5" width="130" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Vendor Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSy-j6-137" userLabel="Vendor Name" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="147" width="130" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Vendor Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-Nb-k2B" userLabel="Vendor Address" customClass="CustomLabel" customModule="ShoppingCart" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="168.5" width="130" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-b9-aSs">
+                                                    <rect key="frame" x="0.0" y="190" width="150" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="mcl-X7-QUa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
                                                     <state key="normal" title="Add to Cart">
                                                         <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -253,20 +292,39 @@
                                                         <action selector="AddToCartPressed:" destination="FMN-5c-Hve" eventType="touchUpInside" id="cPY-ko-seq"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL5-03-DIT">
-                                                    <rect key="frame" x="27" y="103" width="96" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="iTf-Nb-k2B" firstAttribute="leading" secondItem="Tfj-Gt-Xy0" secondAttribute="leading" constant="10" id="1hj-ij-oVu"/>
+                                            <constraint firstItem="1cX-k0-rNG" firstAttribute="leading" secondItem="Tfj-Gt-Xy0" secondAttribute="leading" constant="10" id="3aY-UU-Lvl"/>
+                                            <constraint firstItem="1IB-b9-aSs" firstAttribute="top" secondItem="iTf-Nb-k2B" secondAttribute="bottom" constant="5" id="5Af-dW-s3c"/>
+                                            <constraint firstItem="tL5-03-DIT" firstAttribute="top" secondItem="Fb2-Lm-1I9" secondAttribute="bottom" constant="10" id="BMx-Vt-k2H"/>
+                                            <constraint firstItem="1cX-k0-rNG" firstAttribute="top" secondItem="tL5-03-DIT" secondAttribute="bottom" constant="5" id="EQf-Ri-HQC"/>
+                                            <constraint firstAttribute="trailing" secondItem="1cX-k0-rNG" secondAttribute="trailing" constant="10" id="Fwy-cL-wb9"/>
+                                            <constraint firstItem="rSy-j6-137" firstAttribute="leading" secondItem="Tfj-Gt-Xy0" secondAttribute="leading" constant="10" id="ImJ-fq-06W"/>
+                                            <constraint firstAttribute="bottom" secondItem="1IB-b9-aSs" secondAttribute="bottom" id="Iye-Ih-jPY"/>
+                                            <constraint firstAttribute="trailing" secondItem="1IB-b9-aSs" secondAttribute="trailing" id="KQH-VK-sh3"/>
+                                            <constraint firstItem="s29-iN-y6E" firstAttribute="centerY" secondItem="Fb2-Lm-1I9" secondAttribute="centerY" id="Q1e-Mq-9sj"/>
+                                            <constraint firstItem="tL5-03-DIT" firstAttribute="leading" secondItem="Tfj-Gt-Xy0" secondAttribute="leading" constant="10" id="TR2-BY-0Jp"/>
+                                            <constraint firstItem="Fb2-Lm-1I9" firstAttribute="leading" secondItem="Tfj-Gt-Xy0" secondAttribute="leading" constant="19" id="TzE-V6-uf7"/>
+                                            <constraint firstItem="iTf-Nb-k2B" firstAttribute="top" secondItem="rSy-j6-137" secondAttribute="bottom" constant="5" id="Yae-Lo-YSp"/>
+                                            <constraint firstItem="1IB-b9-aSs" firstAttribute="leading" secondItem="Tfj-Gt-Xy0" secondAttribute="leading" id="Z7r-MY-m4f"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fb2-Lm-1I9" secondAttribute="trailing" constant="19" id="Zyz-pj-fun"/>
+                                            <constraint firstItem="rSy-j6-137" firstAttribute="top" secondItem="1cX-k0-rNG" secondAttribute="bottom" constant="10" id="bN5-ez-06x"/>
+                                            <constraint firstItem="Fb2-Lm-1I9" firstAttribute="top" secondItem="Tfj-Gt-Xy0" secondAttribute="top" constant="10" id="eNF-gf-Zef"/>
+                                            <constraint firstAttribute="trailing" secondItem="rSy-j6-137" secondAttribute="trailing" constant="10" id="lEy-OZ-msQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="iTf-Nb-k2B" secondAttribute="trailing" constant="10" id="tCM-am-1No"/>
+                                            <constraint firstItem="s29-iN-y6E" firstAttribute="centerX" secondItem="Fb2-Lm-1I9" secondAttribute="centerX" id="xce-wV-wrv"/>
+                                            <constraint firstAttribute="trailing" secondItem="tL5-03-DIT" secondAttribute="trailing" constant="10" id="zFx-JG-rdI"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="activityIndicator" destination="s29-iN-y6E" id="cFY-P4-KMQ"/>
                                             <outlet property="button_AddToCart" destination="1IB-b9-aSs" id="SlG-fs-qi9"/>
                                             <outlet property="imageOne" destination="Fb2-Lm-1I9" id="PAl-ty-Sia"/>
-                                            <outlet property="label_ProductName" destination="tL5-03-DIT" id="Sm2-7o-jYk"/>
+                                            <outlet property="label_Price" destination="1cX-k0-rNG" id="uCZ-Z7-UDO"/>
+                                            <outlet property="label_ProductName" destination="tL5-03-DIT" id="OSk-Ge-xMx"/>
+                                            <outlet property="label_VendorAddress" destination="iTf-Nb-k2B" id="1wA-Vf-yy8"/>
+                                            <outlet property="label_VendorName" destination="rSy-j6-137" id="9k6-sm-Hzd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -291,7 +349,7 @@
                             <constraint firstItem="84f-KG-Pk7" firstAttribute="top" secondItem="voY-jM-iEn" secondAttribute="bottom" constant="5" id="xyO-3M-gDJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yGm-1z-l2F"/>
+                    <tabBarItem key="tabBarItem" title="Products" image="list.png" id="yGm-1z-l2F"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="4w7-hn-94i" id="vfM-5a-omo"/>
@@ -303,4 +361,8 @@
             <point key="canvasLocation" x="-1860" y="-335.98200899550227"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Players.png" width="30" height="30"/>
+        <image name="list.png" width="30" height="30"/>
+    </resources>
 </document>

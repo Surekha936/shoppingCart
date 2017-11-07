@@ -12,10 +12,19 @@ private let reuseIdentifier = "Cell"
 class MyCollectionViewCell: UICollectionViewCell
 {
     @IBOutlet weak var imageOne: UIImageView!
-    @IBOutlet weak var label_ProductName: UILabel!
+   
+    @IBOutlet weak var label_ProductName: CustomLabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var label_Price: CustomLabel!
+    @IBOutlet weak var label_VendorName: CustomLabel!
+    @IBOutlet weak var label_VendorAddress: CustomLabel!
     @IBOutlet weak var button_AddToCart: UIButton!
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        button_AddToCart.layer.borderColor = UIColor.gray.cgColor
+        button_AddToCart.layer.borderWidth = 1.0
+    }
     
 }
 class ProductsCollectionViewController: UIViewController, UICollectionViewDataSource
@@ -30,9 +39,8 @@ class ProductsCollectionViewController: UIViewController, UICollectionViewDataSo
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
-        self.automaticallyAdjustsScrollViewInsets = false;
-    
-//        self.loadProducts()
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.loadProducts()
     }
 
     @IBAction func AddToCartPressed(_ sender: UIButton)
@@ -109,7 +117,23 @@ class ProductsCollectionViewController: UIViewController, UICollectionViewDataSo
         
         if    let appDict : NSDictionary =  array_Products[indexPath.row] as? NSDictionary
         {
-            cell.label_ProductName.text =  appDict["productname"] as? String
+           
+            if appDict["productname"] != nil
+            {      cell.label_ProductName.text = appDict["productname"] as? String
+            }
+            if appDict["price"] != nil
+            {
+                var  price : String = (appDict["price"] as? String)!
+                cell.label_Price.text    = "Price :" + price
+            }
+            if appDict["vendoraddress"] != nil
+            {
+                cell.label_VendorAddress.text   = appDict["vendoraddress"] as? String
+            }
+            if appDict["vendorName"] != nil
+            {
+                cell.label_Price.text    = appDict["vendorName"] as? String
+            }
            cell.button_AddToCart.tag = indexPath.row
             let imageStr = appDict["productImg"] as! String
             if (imageCache[imageStr] != nil)

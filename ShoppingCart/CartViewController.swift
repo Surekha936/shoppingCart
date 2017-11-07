@@ -11,23 +11,23 @@ import CoreData
 class CustomTableViewCell: UITableViewCell
 {
     @IBOutlet weak var imageVIewProduct: UIImageView!
-    
     @IBOutlet weak var label_ProductName: CustomLabel!
-    
     @IBOutlet weak var label_VendorName: CustomLabel!
-    
     @IBOutlet weak var label_VendorAddress: CustomLabel!
-    
     @IBOutlet weak var label_Price: CustomLabel!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var label_PriceValue: CustomLabel!
-    
     @IBOutlet weak var button_CallVendor: UIButton!
-    
-    
     @IBOutlet weak var button_RemoveFromCart: UIButton!
     
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        button_CallVendor.layer.borderColor = UIColor.gray.cgColor
+        button_RemoveFromCart.layer.borderColor = UIColor.gray.cgColor
+        button_CallVendor.layer.borderWidth = 1.0
+        button_RemoveFromCart.layer.borderWidth = 1.0
+    }
 }
 class CartViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -36,16 +36,28 @@ class CartViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
+        tableView.backgroundColor = UIColor.white
+        tableView.tableHeaderView?.frame.size = CGSize.zero
 //        tableView.register(CustomTableViewCell.self,
 //                           forCellReuseIdentifier: "Cell")
 // tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 //        self.tableView.register(UITableViewCell(), forCellReuseIdentifier: "Cell")
 //
-        
-        productsArray = cart.getCartData()
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+        self.automaticallyAdjustsScrollViewInsets = false;
+        self.tableView.contentInset = UIEdgeInsets.zero;
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets.zero;
+      
+      
         // Do any additional setup after loading the view.
     }
-
+    override func viewWillAppear(_ animated: Bool)
+    {
+          productsArray = cart.getCartData()
+        self.tableView.reloadData()
+    }
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -55,7 +67,14 @@ class CartViewController: UIViewController, UITableViewDataSource {
 
     @IBAction func buttonCallVendorPressed(_ sender: UIButton)
     {
-        
+         let product = productsArray[sender.tag]
+        if let url = URL(string: "tel://\(product.value(forKeyPath: "phoneNumber"))"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
     
     @IBAction func button_RemoveFromCartPressed(_ sender: UIButton)
@@ -132,12 +151,28 @@ class CartViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80;
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
     }
 
-   
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        footerView.backgroundColor = UIColor.blue
+        return footerView
+    }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return 40
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1.0
+    }
     /*
     // MARK: - Navigation
 

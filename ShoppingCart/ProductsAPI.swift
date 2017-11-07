@@ -36,16 +36,11 @@ class ProductsAPI: NSObject
                             {
                                 completion( [])
                             }
-                            
-                            
                         }
-                            
                         catch let error
                         {
                             print("error: \(error.localizedDescription)")
                         }
-                       
-                        
                         }.resume()
                 }
         }
