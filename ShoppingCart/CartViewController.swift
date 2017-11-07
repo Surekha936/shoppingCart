@@ -102,7 +102,9 @@ class CartViewController: UIViewController, UITableViewDataSource {
         cell.label_VendorAddress.text = product.value(forKeyPath: "vendorAddress") as! String?
         cell.label_Price.text = "Price"
         cell.label_PriceValue.text = product.value(forKeyPath: "productPrice") as! String?
-        
+        cell.button_CallVendor.tag = indexPath.row
+        cell.button_RemoveFromCart.tag = indexPath.row
+
         if let image = (product.value(forKeyPath: "productImage") as! Data?)
         {
             cell.imageVIewProduct.image = UIImage(data:image)!
