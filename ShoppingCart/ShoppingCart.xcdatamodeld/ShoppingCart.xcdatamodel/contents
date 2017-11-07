@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ProductGallery" representedClassName=".ProductGallery" syncable="YES">
+        <attribute name="galleryID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="galleryPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Products" representedClassName=".Products" syncable="YES">
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="productImagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantitity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="productToGallery" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductGallery" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Products" positionX="196" positionY="-144" width="128" height="193"/>
+        <element name="ProductGallery" positionX="-54" positionY="54" width="128" height="88"/>
+    </elements>
+</model>
